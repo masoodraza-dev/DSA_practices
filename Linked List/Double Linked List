@@ -1,0 +1,54 @@
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+struct DL_Node {
+    int data;
+    DL_Node* prev;
+    DL_Node* next;
+};
+
+DL_Node* Head = NULL;
+
+void insert(int val) {
+    DL_Node* temp = (DL_Node*)malloc(sizeof(DL_Node));
+    temp->data = val;
+    temp->prev = NULL;
+    temp->next = NULL;
+
+    
+    if (Head == NULL) {
+        Head = temp;
+    }
+
+    else {
+        DL_Node* cur = Head;
+        while (cur->next != NULL) {
+            cur = cur->next;
+        }
+        cur->next = temp;
+        temp->prev = cur;
+    }
+}
+
+int main() {
+	
+    int val1, val2 ,val3;
+
+    cout << "Enter first value: ";
+    cin >> val1;
+
+    cout << "Enter second value: ";
+    cin >> val2;
+    
+    cout << "Enter third value: ";
+    cin >> val3;
+
+    insert(val1);
+    insert(val2);
+    insert(val3);
+
+    cout << "Doubly Linked List created ." << endl;
+    return 0;
+}
+
