@@ -71,6 +71,29 @@ class List{
         return false;
     }
 
+    void RemoveEnd(){
+        if (head == NULL){
+            cout<<"Linked List is null \n";
+            return ;
+        }
+
+        Node* temp = head;
+        while(temp->next->next != NULL){
+            temp = temp->next;
+        }
+
+        Node* prev = temp;
+        temp = prev->next;
+        prev->next = NULL;
+        delete temp;
+
+        // Node* del = temp->next; --> loop se jb bahr aaega to temp 2nd last node hoga or last node temp ka next hoga 
+        // temp->next = NULL;  --> temp 2nd last node he uski next ko kr dia (ab temp last node bn gya)
+        // delete del;
+
+        cout<<" the last Node deleted ";
+    }
+
     // void delet(int val){
     //     if(head==NULL){
     //         cout<<"The list is null"<<endl;
