@@ -71,6 +71,20 @@ class List{
         return false;
     }
 
+     void RemoveStart(){
+        if (head == NULL){
+            cout<<"The linked list is null \n";
+            return;
+        }
+
+        Node* temp = head ;
+        head = head ->next;
+        temp->next = NULL;
+        delete temp;
+
+        cout<<"The first node is deleted succesfully! ";
+    }
+
     void RemoveEnd(){
         if (head == NULL){
             cout<<"Linked List is null \n";
