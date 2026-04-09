@@ -108,30 +108,32 @@ class List{
         cout<<" the last Node deleted ";
     }
 
-    // void delet(int val){
-    //     if(head==NULL){
-    //         cout<<"The list is null"<<endl;
-    //         return;
-    //     }
-    //     Node* cur = head;
-    //     Node* prev = NULL;
+    void removeVal(int val){
+        if(head==NULL){
+            cout<<"The list is null"<<endl;
+            return;
+        }
+        Node* cur = head;
+        Node* prev = NULL;
 
-    //     if(head == val){
-    //         head = head->next;
-    //         cur ->next = NULL;
-    //         free(cur);
-    //     }
-    //     while(cur->data !=NULL){
-    //         if(cur->data == val){
-    //             prev->next = cur->next;
-    //             free(cur);
-    //             return;
-    //         }else{
-    //             prev = cur;
-    //             cur = cur ->next;
-    //         }
-    //     }
-    // }
+        if(head->data == val){
+            head = head->next;
+            cur ->next = NULL;
+            delete cur;
+        }
+        while(cur != NULL){
+            if(cur->data == val){
+                prev->next = cur->next;
+                delete cur;
+                return;
+            }else{
+                prev = cur;
+                cur = cur ->next;
+            }
+            cout << "Value not found" << endl;
+        }
+        
+    }
 };
 
 int main(){
