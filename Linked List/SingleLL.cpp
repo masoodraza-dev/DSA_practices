@@ -43,6 +43,28 @@ class List{
         cout<<"Value added successfully"<<endl;
     }
 
+    void pushPos(int val , int pos){
+        if (pos > 0 ){
+            cout<< "Invalid Position " <<endl;
+            return;
+        }
+
+        if (pos == 0){
+            pushFront(val);
+            return;
+        }
+
+        Node* temp = head ;
+        for (int i = 0; i<pos-1;i++){
+            temp = temp->next;
+        }
+
+        Node* newNode = new Node(val);
+        newNode->next = temp->next;
+        temp->next = newNode;
+        cout<< "Value added at position " << pos<< endl;
+    }
+
     void printLL(){
         Node* temp = head;
         if(temp==NULL){
@@ -145,6 +167,8 @@ int main(){
     ll.pushFront(6);
     ll.pushFront(69);
     ll.pushFront(96);
+    ll.printLL();
+    ll.pushPos(1 , 5);
     ll.printLL();
     ll.search(69);
 
