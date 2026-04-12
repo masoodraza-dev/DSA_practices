@@ -77,9 +77,11 @@ int main(){
     list.pushStack(10);
 
     list.showStack();
+    list.topOfStack();
 
     list.popStack();
 
     list.showStack();
+    list.topOfStack();
  return 0;
 }
