@@ -43,8 +43,9 @@ class stack{
         Node* temp = top;
         top = top->next;
         temp->next =NULL;
+        cout<< "value "<< temp->data <<" is poped:\n";
         delete temp;
-        cout<< "value poped:\n";
+       
     }
 
     void showStack(){
@@ -55,11 +56,15 @@ class stack{
 
         Node* temp = top;
         while(temp != NULL){
-            cout << "->" << temp->data ;
+            cout << "->" << temp->data <<endl;
             temp=temp->next;
         }
 
         
+    }
+
+    void topOfStack(){
+        cout<< top->data <<" is at the top of stack:" <<endl;
     }
 };
 
