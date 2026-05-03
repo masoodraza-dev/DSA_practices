@@ -26,6 +26,24 @@ Node* insert(Node* root , int value){
     return root;
 }
 
+bool search(Node* root , int key){
+    if(root == NULL){
+        cout<< "not found: "<< endl;
+        return false;
+    }
+
+    if(root->data == key){
+        cout<< "The value found:"<<endl;
+        return true;
+    }
+
+    if(root->data < key ){
+        return search(root->right , key);
+    }else{
+        return search(root->left , key);
+    }
+}
+
 void preorder(Node* root) {
     if (root == NULL) return;
     cout << root->data << " ";
@@ -55,6 +73,9 @@ int main(){
     insert(root,40);
     insert(root,12);
     insert(root,67);
+
+    search(root,12);
+    search(root,11);
 
     cout<<"pre order"<<endl;
     preorder(root);
