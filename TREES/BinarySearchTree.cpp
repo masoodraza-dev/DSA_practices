@@ -44,6 +44,49 @@ bool search(Node* root , int key){
     }
 }
 
+Node* findMin(Node* root){
+    while(root->left != NULL){
+        root = root->left;
+    }
+
+    return root;
+}
+
+Node* deleteNode(Node* root , int key){
+    if(root == NULL){
+        return NULL;
+    }
+
+    if(key < root->data){
+        root->left = deleteNode(root->left , key);
+    }
+    else if(key > root->data){
+        root->right = deleteNode(root->right , key);
+    }
+    else{
+        if(root->left == NULL && root->right == NULL){
+            delete root;
+            return NULL;
+        }
+        else if(root->left == NULL){
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+        else if(root->right == NULL){
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        else{
+            Node* temp = findMin(root->right);
+            root->data = temp->data;
+            root->right = deleteNode(root->right , temp->data);
+        }
+    }
+    return root;
+}
+
 void preorder(Node* root) {
     if (root == NULL) return;
     cout << root->data << " ";
@@ -73,9 +116,21 @@ int main(){
     insert(root,40);
     insert(root,12);
     insert(root,67);
+    insert(root,11);
 
-    search(root,12);
-    search(root,11);
+    search(root , 12);
+    search(root , 13);
+
+    cout<< "Before deletion:";
+
+    cout<<"\n in order"<<endl; 
+    inorder(root);
+
+    deleteNode(root , 11);
+    cout<< "After deletion:";
+
+    cout<<"\n in order"<<endl; 
+    inorder(root);
 
     cout<<"pre order"<<endl;
     preorder(root);
@@ -83,6 +138,5 @@ int main(){
     cout<<"\n post order"<<endl;
     postorder(root);
 
-    cout<<"\n in order"<<endl; 
-    inorder(root);
+    
 }
