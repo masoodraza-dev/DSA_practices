@@ -43,7 +43,7 @@ bool search(Node* root , int key){
         return search(root->left , key);
     }
 }
-
+// This findMin method helper method to delete a node from Binary Search Tree
 Node* findMin(Node* root){
     while(root->left != NULL){
         root = root->left;
